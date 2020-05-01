@@ -18,15 +18,17 @@ def printRoute(data):
 def knightRoute(data, x, y):
 # Making Current Index as Visited
     data[x][y] = 1
-
+    global route
 # if Chess Board at last index then print route of the knight
-    if x == (N-1):
-        global route
+    if x == (N-1) and route < 10:
         route += 1
         printRoute(data)
         # Making current index to zero so that program can go to other index
         data[x][y] = 0
         return
+    
+    elif x == (N-1) and route >= 10:
+        route += 1
 
         # If index id greater then size of chess board then we need to return
     if x > (N-1):
@@ -74,5 +76,5 @@ else:
         print("No path is possible")
     else:
         print("*"*50)
-        print("There are "+str(route)+" from source to destination for a knight")
+        print("There are total "+str(route)+" routes from source to destination for a knight")
         print("*"*50)
